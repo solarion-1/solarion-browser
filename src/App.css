@@ -1,0 +1,691 @@
+
+/* ========================================
+   SOLARION BROWSER — MAIN STYLES
+   ======================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  font-family: "Segoe UI", Arial, sans-serif;
+  color: #edf0fa;
+  background: #080b16;
+  font-synthesis: none;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+body {
+  background: #080b16;
+}
+
+/* ========================================
+   MAIN BROWSER LAYOUT
+   ======================================== */
+
+.browser-shell {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: #080b16;
+  color: #edf0fa;
+}
+
+/* ========================================
+   TOP TAB BAR
+   ======================================== */
+
+.tabs-bar {
+  height: 39px;
+  min-height: 39px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 10px;
+  background: #0c1120;
+  border-bottom: 1px solid #1c2639;
+  user-select: none;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  min-width: 125px;
+  padding-left: 3px;
+}
+
+.brand-symbol {
+  font-size: 17px;
+  color: #b99aff;
+}
+
+.brand-name {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: #e8e1ff;
+}
+
+.tab-list {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.tab-list::-webkit-scrollbar {
+  display: none;
+}
+
+.browser-tab {
+  height: 30px;
+  min-width: 100px;
+  max-width: 190px;
+  flex: 0 1 175px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0 9px;
+  border-radius: 6px;
+  background: #111a2a;
+  color: #a7b1c6;
+  cursor: pointer;
+  font-size: 11px;
+  transition: background 0.15s ease;
+}
+
+.browser-tab:hover {
+  background: #1a263b;
+}
+
+.browser-tab.active {
+  background: #222b42;
+  color: #ffffff;
+  border: 1px solid #39435f;
+}
+
+.tab-loading {
+  font-size: 8px;
+  color: #a78bfa;
+}
+
+.tab-title {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tab-close {
+  width: 18px;
+  height: 18px;
+  padding: 0;
+  border: none;
+  border-radius: 4px;
+  background: transparent;
+  color: #929bb1;
+  cursor: pointer;
+  font-size: 15px;
+  line-height: 16px;
+}
+
+.tab-close:hover {
+  background: #3b4055;
+  color: #ffffff;
+}
+
+.new-tab-button {
+  width: 27px;
+  height: 27px;
+  flex-shrink: 0;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: #aeb8ce;
+  cursor: pointer;
+  font-size: 19px;
+}
+
+.new-tab-button:hover {
+  background: #202b41;
+  color: white;
+}
+
+/* ========================================
+   NAVIGATION AND ADDRESS BAR
+   ======================================== */
+
+.browser-toolbar {
+  height: 43px;
+  min-height: 43px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 12px;
+  background: #101727;
+  border-bottom: 1px solid #202b40;
+}
+
+.nav-button {
+  width: 29px;
+  height: 29px;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: #b9c3d8;
+  cursor: pointer;
+  font-size: 17px;
+  transition: background 0.15s ease;
+}
+
+.nav-button:hover:not(:disabled) {
+  background: #25314a;
+  color: white;
+}
+
+.nav-button:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.reload-button {
+  font-size: 20px;
+}
+
+.address-form {
+  height: 30px;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 5px;
+  padding: 0 9px;
+  border: 1px solid #2a3650;
+  border-radius: 7px;
+  background: #0a1020;
+}
+
+.address-form:focus-within {
+  border-color: #9878df;
+  box-shadow: 0 0 0 2px rgba(151, 119, 222, 0.12);
+}
+
+.address-lock {
+  color: #a78bfa;
+  font-size: 16px;
+}
+
+.address-form input {
+  width: 100%;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #edf0fa;
+  font-family: inherit;
+  font-size: 11px;
+}
+
+.address-form input::placeholder {
+  color: #68758d;
+}
+
+.go-button {
+  border: none;
+  border-radius: 5px;
+  padding: 4px 10px;
+  background: #7056b7;
+  color: white;
+  font-size: 10px;
+  cursor: pointer;
+}
+
+.go-button:hover {
+  background: #876bd0;
+}
+
+.bookmark-star {
+  font-size: 20px;
+}
+
+.bookmark-star.bookmarked {
+  color: #c4a0ff;
+}
+
+.bookmarks-active {
+  background: #30284b;
+  color: #d9caff;
+}
+
+/* ========================================
+   WORKSPACE BAR
+   ======================================== */
+
+.workspace-bar {
+  height: 35px;
+  min-height: 35px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0 12px;
+  background: #0d1422;
+  border-bottom: 1px solid #202b40;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.workspace-bar::-webkit-scrollbar {
+  display: none;
+}
+
+.workspace-label {
+  margin-right: 5px;
+  color: #74829b;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.workspace-button {
+  height: 24px;
+  padding: 0 11px;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  background: transparent;
+  color: #9da9c0;
+  font-size: 10px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.workspace-button:hover {
+  background: #1c2940;
+  color: #ffffff;
+}
+
+.workspace-button.selected {
+  background: #292341;
+  border-color: #55447d;
+  color: #d7c4ff;
+}
+
+.workspace-add,
+.group-add {
+  height: 23px;
+  padding: 0 8px;
+  border: 1px solid #303b52;
+  border-radius: 5px;
+  background: #151e30;
+  color: #b5a0ed;
+  font-size: 11px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.workspace-add:hover,
+.group-add:hover {
+  background: #292341;
+}
+
+.workspace-spacer {
+  flex: 1;
+  min-width: 8px;
+}
+
+.group-select {
+  max-width: 130px;
+  height: 24px;
+  padding: 0 6px;
+  border: 1px solid #303b52;
+  border-radius: 5px;
+  outline: none;
+  background: #151e30;
+  color: #aeb8ce;
+  font-size: 10px;
+  cursor: pointer;
+}
+
+.group-select option {
+  background: #151e30;
+  color: #edf0fa;
+}
+
+/* ========================================
+   MAIN WEBSITE CONTENT AREA
+   ======================================== */
+
+.browser-content {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      ellipse at 50% 35%,
+      rgba(64, 47, 112, 0.15),
+      transparent 55%
+    ),
+    #080b16;
+}
+
+/* ========================================
+   SOLARION HOME SCREEN
+   ======================================== */
+
+.home-welcome {
+  width: min(760px, 92%);
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 25px 15px;
+  text-align: center;
+  overflow-y: auto;
+}
+
+.home-orb {
+  width: 62px;
+  height: 62px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  border: 1px solid #67529d;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, #47356f 0%, #17152e 65%, #0b1020 100%);
+  box-shadow:
+    0 0 25px rgba(157, 117, 255, 0.2),
+    inset 0 0 18px rgba(174, 139, 255, 0.12);
+  color: #d6c2ff;
+  font-size: 27px;
+}
+
+.home-eyebrow {
+  margin: 0 0 13px;
+  color: #a78bfa;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 3px;
+}
+
+.home-welcome h1 {
+  margin: 0;
+  color: #f1edff;
+  font-size: clamp(34px, 5vw, 53px);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -1.5px;
+}
+
+.home-welcome h1 span {
+  color: #ad91f5;
+}
+
+.home-welcome > p:not(.home-eyebrow):not(.home-hint) {
+  max-width: 420px;
+  margin: 15px 0 27px;
+  color: #929eb5;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+/* ========================================
+   QUICK WEBSITE SHORTCUTS
+   ======================================== */
+
+.shortcut-grid {
+  width: min(570px, 100%);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.shortcut-card {
+  min-height: 65px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 6px;
+  padding: 12px 14px;
+  border: 1px solid #28344c;
+  border-radius: 8px;
+  background: rgba(19, 28, 45, 0.85);
+  color: #e5e8f3;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease,
+    transform 0.15s ease;
+}
+
+.shortcut-card:hover {
+  transform: translateY(-2px);
+  border-color: #7660b3;
+  background: #1b2540;
+}
+
+.shortcut-card strong {
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.shortcut-card span {
+  color: #8592ac;
+  font-size: 9px;
+}
+
+.home-hint {
+  margin-top: 27px;
+  color: #69758e;
+  font-size: 10px;
+}
+
+/* ========================================
+   BOOKMARKS PAGE
+   ======================================== */
+
+.bookmarks-page {
+  width: min(900px, 90%);
+  height: 100%;
+  margin: auto;
+  padding: 55px 15px;
+  overflow-y: auto;
+}
+
+.bookmarks-heading span {
+  color: #a78bfa;
+  font-size: 10px;
+  letter-spacing: 3px;
+}
+
+.bookmarks-heading h1 {
+  margin: 10px 0;
+  color: #f0edff;
+  font-size: 35px;
+}
+
+.bookmarks-heading p {
+  color: #8995ad;
+  font-size: 13px;
+}
+
+.bookmarks-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 30px;
+}
+
+.bookmark-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px;
+  border: 1px solid #252f43;
+  border-radius: 9px;
+  background: #131b2a;
+}
+
+.bookmark-open {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  border: none;
+  background: transparent;
+  color: #e8ebf5;
+  text-align: left;
+  cursor: pointer;
+}
+
+.bookmark-open strong {
+  font-size: 13px;
+}
+
+.bookmark-open span {
+  overflow: hidden;
+  color: #8995ad;
+  font-size: 10px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.bookmark-open:hover strong {
+  color: #c4a0ff;
+}
+
+.bookmark-delete {
+  border: none;
+  background: transparent;
+  color: #929bb1;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.bookmark-delete:hover {
+  color: #ff8585;
+}
+
+.empty-bookmarks {
+  margin: 75px auto;
+  color: #8995ad;
+  text-align: center;
+}
+
+.empty-bookmark-icon {
+  color: #a78bfa;
+  font-size: 45px;
+}
+
+.empty-bookmarks h2 {
+  color: #e8ebf5;
+  font-size: 19px;
+}
+
+.empty-bookmarks p {
+  font-size: 12px;
+}
+
+/* ========================================
+   SCROLLBARS
+   ======================================== */
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #39435b transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: #39435b;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: #66558e;
+}
+
+/* ========================================
+   RESPONSIVE LAYOUT
+   ======================================== */
+
+@media (max-width: 800px) {
+  .brand {
+    min-width: 95px;
+  }
+
+  .browser-tab {
+    min-width: 85px;
+    max-width: 145px;
+  }
+
+  .workspace-bar {
+    gap: 4px;
+  }
+
+  .workspace-label {
+    display: none;
+  }
+
+  .group-select {
+    max-width: 100px;
+  }
+}
+
+@media (max-width: 650px) {
+  .brand {
+    min-width: 75px;
+  }
+
+  .brand-name {
+    font-size: 8px;
+    letter-spacing: 1px;
+  }
+
+  .shortcut-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .bookmarks-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .bookmarks-page {
+    padding-top: 30px;
+  }
+}
