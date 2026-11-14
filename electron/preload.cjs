@@ -28,11 +28,29 @@ contextBridge.exposeInMainWorld("solarion", {
   openDownload: (id) => ipcRenderer.invoke("downloads:open", id),
   showDownload: (id) => ipcRenderer.invoke("downloads:show", id),
 
+  // Extensions
+  getExtensions: () =>
+    ipcRenderer.invoke("extensions:get"),
+
+  installExtension: () =>
+    ipcRenderer.invoke("extensions:install"),
+
+  setExtensionEnabled: (id, enabled) =>
+    ipcRenderer.invoke("extensions:set-enabled", id, enabled),
+
+  removeExtension: (id) =>
+    ipcRenderer.invoke("extensions:remove", id),
+
   // Window controls
-  minimizeWindow: () => ipcRenderer.send("window:minimize"),
+  minimizeWindow: () =>
+    ipcRenderer.send("window:minimize"),
+
   toggleMaximizeWindow: () =>
     ipcRenderer.send("window:toggle-maximize"),
-  closeWindow: () => ipcRenderer.send("window:close"),
+
+  closeWindow: () =>
+    ipcRenderer.send("window:close"),
+
   isWindowMaximized: () =>
     ipcRenderer.invoke("window:is-maximized"),
 
@@ -83,6 +101,15 @@ contextBridge.exposeInMainWorld("solarion", {
 
     return () => {
       ipcRenderer.removeListener("downloads:updated", listener);
+    };
+  },
+
+  onExtensionsUpdated: (callback) => {
+    const listener = (_event, extensions) => callback(extensions);
+    ipcRenderer.on("extensions:updated", listener);
+
+    return () => {
+      ipcRenderer.removeListener("extensions:updated", listener);
     };
   }
 });
